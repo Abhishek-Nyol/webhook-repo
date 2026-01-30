@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Webhook Events</title>
+    <meta http-equiv="refresh" content="15">
+</head>
+<body>
+    <h2>GitHub Webhook Events</h2>
+
+    {% if events %}
+        {% for event in events %}
+            <p>
+                {{ event.author }}
+                {{ event.action | lower }}
+                branch "{{ event.from_branch }}"
+                to "{{ event.to_branch }}"
+                on {{ event.timestamp }}
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>No events found.</p>
+    {% endif %}
+</body>
+</html>
